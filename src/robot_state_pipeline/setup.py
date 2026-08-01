@@ -24,6 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'state_publisher = robot_state_pipeline.state_publisher:main',
+            'state_monitor = robot_state_pipeline.state_monitor:main',
         ],
     },
 )

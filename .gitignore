@@ -3,6 +3,7 @@ logs/
 build/
 bin/
 lib/
+install/
 msg_gen/
 srv_gen/
 msg/*Action.msg
@@ -37,6 +38,8 @@ srv/_*.py
 *.pyc
 qtcreator-*
 *.user
+__pycache__/
+.pytest_cache/
 
 /planning/cfg
 /planning/docs
@@ -49,3 +52,6 @@ qtcreator-*
 
 # Catkin custom files
 CATKIN_IGNORE
+
+# ignore logs
+log/
