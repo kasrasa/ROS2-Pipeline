@@ -27,6 +27,7 @@ setup(
             'state_publisher = robot_state_pipeline.state_publisher:main',
             'state_monitor = robot_state_pipeline.state_monitor:main',
             'move_action_server = robot_state_pipeline.move_action_server:main',
+            'camera_publisher = robot_state_pipeline.camera_publisher:main',
         ],
     },
 )

@@ -9,6 +9,7 @@ from rclpy.qos import (
     QoSProfile,
     ReliabilityPolicy,
 )
+from rclpy.event_handler import SubscriptionEventCallbacks
 from sensor_msgs.msg import JointState
 
 
@@ -26,7 +27,10 @@ class StateMonitor(Node):
             JointState,
             '/joint_states',
             self.process_state,
-            robot_state_qos
+            robot_state_qos,
+            event_callbacks=SubscriptionEventCallbacks(
+                incompatible_qos=self.handle_qos_compatibility
+            )
         )
 
         self.message_count = 0
@@ -43,6 +47,13 @@ class StateMonitor(Node):
                 self.stale_msg_threshold = float(param.value)
                 self.get_logger().info(f"Updated stale_msg_threshold to {self.stale_msg_threshold:.3f} seconds.")        
         return SetParametersResult(successful=True)
+    
+    def handle_qos_compatibility(self, event) -> None:
+        self.get_logger().error(
+        'Incompatible QoS discovered on /joint_states. '
+        f'Total incompatibilities: {event.total_count}; '
+        f'last policy kind: {event.last_policy_kind}'
+    )
     
     def process_state(self, msg: JointState) -> None:
         self.message_count += 1
