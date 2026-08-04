@@ -1,0 +1,15 @@
+# Goal
+float64 target_shoulder
+float64 target_elbow
+float64 duration_sec
+---
+# Result
+bool success
+string message
+float64 final_shoulder
+float64 final_elbow
+---
+# Feedback
+float64 progress
+float64 current_shoulder
+float64 current_elbow

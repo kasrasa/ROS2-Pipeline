@@ -3,18 +3,30 @@ from rclpy.node import Node
 from rclpy.time import Time
 from rcl_interfaces.msg import SetParametersResult
 from rclpy.parameter import Parameter
+from rclpy.qos import (
+    DurabilityPolicy,
+    HistoryPolicy,
+    QoSProfile,
+    ReliabilityPolicy,
+)
 from sensor_msgs.msg import JointState
 
 
 class StateMonitor(Node):
     def __init__(self) -> None:
         super().__init__('state_monitor')
+        robot_state_qos = QoSProfile(
+            reliability=ReliabilityPolicy.RELIABLE,
+            durability=DurabilityPolicy.VOLATILE,
+            history=HistoryPolicy.KEEP_LAST,
+            depth=10,
+        )
         
         self.subscription = self.create_subscription(
             JointState,
             '/joint_states',
             self.process_state,
-            10
+            robot_state_qos
         )
 
         self.message_count = 0

@@ -1,1 +1,1 @@
-rclpy:sensor_msgs:std_srvs
+diagnostic_msgs:rclpy:robot_state_interfaces:sensor_msgs:std_srvs
