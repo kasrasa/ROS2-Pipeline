@@ -21,7 +21,7 @@ class CameraPublisher(Node):
         self.publisher = self.create_publisher(Image, '/camera/image_raw', camera_qos)
 
         self.frame_count = 0
-        self.declare_parameter('timer_frequency_hz', 10.0)
+        self.declare_parameter('timer_frequency_hz', 30.0)
         publish_rate = self.get_parameter('timer_frequency_hz').get_parameter_value().double_value
         self.timer_period = 1.0 / publish_rate if publish_rate > 0 else 0.5
         self.timer = self.create_timer(self.timer_period, self.publish_image)

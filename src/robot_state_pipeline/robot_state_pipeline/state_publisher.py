@@ -22,7 +22,7 @@ class StatePublisher(Node):
             depth=10,
         )
 
-        self.publisher = self.create_publisher(JointState, '/joint_states', robot_state_qos)
+        self.publisher = self.create_publisher(JointState, '/robot/joint_states', robot_state_qos)
         self.robot_info_service = self.create_service(Trigger, '/robot_info', self.handle_robot_info_request)
         self.consumer = self.create_subscription(JointState, '/commanded_joint_states', self.handle_commanded_state, 10)
 
