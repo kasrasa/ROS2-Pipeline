@@ -29,8 +29,8 @@ class TimestampSynchronizer(Node):
         self.plc_buffer = deque(maxlen=100)
         self.camera_buffer = deque(maxlen=10)
 
-        self.joint_state_tol = 0.5  # 500 ms tolerance for joint state synchronization
-        self.plc_state_tol = 0.5  # 500 ms tolerance for PLC state synchronization
+        self.joint_state_tol = 0.01  # 10 ms tolerance for joint state synchronization
+        self.plc_state_tol = 0.2  # 200 ms tolerance for PLC state synchronization
         self.dropped_samples_count = 0
 
         self.create_subscription(JointState, '/robot/joint_states', self.joint_state_callback, 10)
