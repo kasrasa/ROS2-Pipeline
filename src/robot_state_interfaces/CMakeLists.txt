@@ -15,6 +15,7 @@ find_package(std_msgs REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/PlcState.msg"
+  "msg/AlignmentReport.msg"
   "action/MoveToJointPosition.action"
   DEPENDENCIES std_msgs
 )

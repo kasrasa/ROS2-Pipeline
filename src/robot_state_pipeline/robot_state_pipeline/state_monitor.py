@@ -25,7 +25,7 @@ class StateMonitor(Node):
         
         self.subscription = self.create_subscription(
             JointState,
-            '/joint_states',
+            '/robot/joint_states',
             self.process_state,
             robot_state_qos,
             event_callbacks=SubscriptionEventCallbacks(

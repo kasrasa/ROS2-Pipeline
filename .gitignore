@@ -1,5 +1,6 @@
 devel/
 logs/
+bags/
 build/
 bin/
 lib/
@@ -44,6 +45,7 @@ __pycache__/
 /planning/cfg
 /planning/docs
 /planning/src
+*.bak
 
 *~
 
